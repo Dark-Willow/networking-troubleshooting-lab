@@ -13,14 +13,6 @@ The Windows 10 client could reach the internal Active Directory domain controlle
 | Client IP Address | 192.168.10.20 |
 | Domain Controller IP Address | 192.168.10.10 |
 | DNS Server | 192.168.10.10 |
-
-## Symptoms
-
-The client successfully reached the domain controller using:
-
-```cmd
-ping 192.168.10.10
-
 Investigation
 
 The IPv4 network adapter settings were checked.
@@ -51,3 +43,12 @@ DNS testing
 Default gateway troubleshooting
 IPv4 configuration review
 Service desk documentation
+
+## Symptoms
+
+The client successfully reached the domain controller using:
+
+```cmd
+ping 192.168.10.10
+
+
