@@ -37,3 +37,29 @@ ping shirleylab.local
 ipconfig /displaydns
 ipconfig /flushdns
 nslookup shirleylab.local
+```
+
+## Evidence Collected
+
+- `12-nslookup-public-dns-failed.png`
+- `13-nslookup-domain-controller-dns-success.png`
+- `14-ping-domain-name.png`
+- `15-display-dns-cache.png`
+- `16-flush-dns-cache.png`
+- `17-nslookup-after-dns-flush.png`
+
+## Troubleshooting Notes
+
+Public DNS was tested using `8.8.8.8`. This failed to resolve `shirleylab.local` because the domain is a private Active Directory domain and is not known to public DNS servers.
+
+The domain controller DNS server at `192.168.10.10` was then tested. This successfully resolved `shirleylab.local`, showing that internal DNS was working correctly.
+
+The DNS cache was displayed using `ipconfig /displaydns`, then cleared using `ipconfig /flushdns`. DNS resolution was tested again after the cache was cleared.
+
+## What I Learned
+
+This lab helped me understand the difference between public DNS and internal Active Directory DNS.
+
+I learned that private domains such as `shirleylab.local` should be resolved by the internal domain controller DNS server, not by public DNS servers like `8.8.8.8`.
+
+I also practised using DNS cache commands to display and clear cached DNS records during troubleshooting.
