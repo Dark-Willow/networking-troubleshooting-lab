@@ -13,36 +13,6 @@ The Windows 10 client could reach the internal Active Directory domain controlle
 | Client IP Address | 192.168.10.20 |
 | Domain Controller IP Address | 192.168.10.10 |
 | DNS Server | 192.168.10.10 |
-Investigation
-
-The IPv4 network adapter settings were checked.
-
-The client had:
-
-IP address: 192.168.10.20
-Subnet mask: 255.255.255.0
-DNS server: 192.168.10.10
-Default gateway: blank
-Cause
-
-The client did not have a default gateway configured.
-
-This meant the computer could communicate with devices on the internal lab network but had no route to external networks or the internet.
-
-Resolution
-
-For this lab, the issue was documented rather than changed.
-
-In a real environment, the next step would be to confirm the correct gateway address and configure it manually or through DHCP.
-
-Skills Demonstrated
-Network troubleshooting
-ipconfig /all
-Ping testing
-DNS testing
-Default gateway troubleshooting
-IPv4 configuration review
-Service desk documentation
 
 ## Symptoms
 
@@ -50,5 +20,50 @@ The client successfully reached the domain controller using:
 
 ```cmd
 ping 192.168.10.10
+```
 
+However, the client failed to reach Google DNS using:
 
+```cmd
+ping 8.8.8.8
+```
+
+The ping test returned:
+
+```text
+PING: transmit failed. General failure.
+Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)
+```
+
+## Investigation
+
+The IPv4 network adapter settings were checked.
+
+The client had:
+
+- IP address: `192.168.10.20`
+- Subnet mask: `255.255.255.0`
+- DNS server: `192.168.10.10`
+- Default gateway: blank
+
+## Cause
+
+The client did not have a default gateway configured.
+
+This meant the computer could communicate with devices on the internal lab network but had no route to external networks or the internet.
+
+## Resolution
+
+For this lab, the issue was documented rather than changed.
+
+In a real environment, the next step would be to confirm the correct gateway address and configure it manually or through DHCP.
+
+## Skills Demonstrated
+
+- Network troubleshooting
+- `ipconfig /all`
+- Ping testing
+- DNS testing
+- Default gateway troubleshooting
+- IPv4 configuration review
+- Service desk documentation
