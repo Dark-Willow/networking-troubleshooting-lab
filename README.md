@@ -4,7 +4,7 @@
 
 This repository documents a hands-on networking troubleshooting lab using a Windows 10 client in an Active Directory lab environment.
 
-The purpose of this project is to practise common IT Support and Service Desk network checks, including IP configuration review, ping testing, DNS testing, traceroute checks, IPv4 adapter review, default gateway troubleshooting, NAT adapter configuration, DNS cache commands, network adapter troubleshooting, and troubleshooting documentation.
+The purpose of this project is to practise common IT Support and Service Desk network checks, including IP configuration review, ping testing, DNS testing, traceroute checks, IPv4 adapter review, default gateway troubleshooting, NAT adapter configuration, DNS cache commands, network adapter troubleshooting, DNS misconfiguration troubleshooting, and troubleshooting documentation.
 
 ## Lab Environment
 
@@ -23,6 +23,7 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 | NAT Adapter | Ethernet 2 |
 | NAT Adapter IP Address | 10.0.3.15 |
 | NAT Default Gateway | 10.0.3.2 |
+| Incorrect DNS Server Tested | 8.8.8.8 |
 
 ## Completed Labs
 
@@ -32,6 +33,7 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 | Lab 02 | Fixing Internet Connectivity with NAT Adapter | Complete |
 | Lab 03 | DNS Troubleshooting & DNS Cache Commands | Complete |
 | Lab 04 | Network Adapter Disable/Enable Troubleshooting | Complete |
+| Lab 05 | DNS Misconfiguration Troubleshooting | Complete |
 
 ## Lab Notes
 
@@ -39,6 +41,7 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 - [Lab 02 — Fixing Internet Connectivity with NAT Adapter](notes/lab-02-nat-adapter-internet-connectivity.md)
 - [Lab 03 — DNS Troubleshooting & DNS Cache Commands](notes/lab-03-dns-troubleshooting.md)
 - [Lab 04 — Network Adapter Disable/Enable Troubleshooting](notes/lab-04-network-adapter-disable-enable.md)
+- [Lab 05 — DNS Misconfiguration Troubleshooting](notes/lab-05-dns-misconfiguration-troubleshooting.md)
 
 ## Troubleshooting Scenarios
 
@@ -46,6 +49,7 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 - [Scenario 02 — Fixing Internet Connectivity with NAT Adapter](troubleshooting-scenarios/scenario-02-fixing-internet-connectivity-with-nat.md)
 - [Scenario 03 — Public DNS Cannot Resolve Private Active Directory Domain](troubleshooting-scenarios/scenario-03-public-dns-cannot-resolve-private-domain.md)
 - [Scenario 04 — Disabled NAT Adapter Causing No Internet Access](troubleshooting-scenarios/scenario-04-disabled-nat-adapter-no-internet.md)
+- [Scenario 05 — Wrong DNS Server Causing Internal Domain Resolution Failure](troubleshooting-scenarios/scenario-05-wrong-dns-server-internal-domain-failure.md)
 
 ## Lab 01: Basic Network Configuration & Connectivity Testing
 
@@ -283,6 +287,9 @@ ipconfig /flushdns
 - Active Directory DNS checks
 - DNS cache review
 - DNS cache flushing
+- DNS misconfiguration troubleshooting
+- DNS server configuration
+- DNS cache management
 - Service desk documentation
 - Technical documentation
 
@@ -302,4 +309,6 @@ I also practised displaying and flushing the DNS resolver cache using `ipconfig 
 
 In Lab 04, I simulated a connectivity issue by disabling the NAT adapter. This showed how a disabled adapter can stop internet access and how enabling the adapter again restores connectivity.
 
-This helped me understand the difference between internal lab networking, DNS, default gateways, NAT, DNS cache, network adapter status, and internet connectivity troubleshooting.
+In Lab 05, I learned that network connectivity and DNS resolution are two different things. A computer can successfully reach external IP addresses while still failing to resolve internal domain names if the wrong DNS server is configured. Restoring the correct Active Directory DNS server and flushing the DNS cache restored normal domain name resolution.
+
+This helped me understand the difference between internal lab networking, DNS, default gateways, NAT, DNS cache, network adapter status, DNS server configuration, and internet connectivity troubleshooting.
