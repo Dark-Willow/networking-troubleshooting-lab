@@ -4,7 +4,7 @@
 
 This repository documents a hands-on networking troubleshooting lab using a Windows 10 client in an Active Directory lab environment.
 
-The purpose of this project is to practise common IT Support and Service Desk network checks, including IP configuration review, ping testing, DNS testing, traceroute checks, IPv4 adapter review, default gateway troubleshooting, NAT adapter configuration, DNS cache commands, and troubleshooting documentation.
+The purpose of this project is to practise common IT Support and Service Desk network checks, including IP configuration review, ping testing, DNS testing, traceroute checks, IPv4 adapter review, default gateway troubleshooting, NAT adapter configuration, DNS cache commands, network adapter troubleshooting, and troubleshooting documentation.
 
 ## Lab Environment
 
@@ -20,6 +20,7 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 | Domain Controller IP Address | 192.168.10.10 |
 | Internal DNS Server | 192.168.10.10 |
 | Public DNS Server Tested | 8.8.8.8 |
+| NAT Adapter | Ethernet 2 |
 | NAT Adapter IP Address | 10.0.3.15 |
 | NAT Default Gateway | 10.0.3.2 |
 
@@ -30,18 +31,21 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 | Lab 01 | Basic Network Configuration & Connectivity Testing | Complete |
 | Lab 02 | Fixing Internet Connectivity with NAT Adapter | Complete |
 | Lab 03 | DNS Troubleshooting & DNS Cache Commands | Complete |
+| Lab 04 | Network Adapter Disable/Enable Troubleshooting | Complete |
 
 ## Lab Notes
 
 - [Lab 01 — Basic Network Configuration & Connectivity Testing](notes/lab-01-basic-network-connectivity.md)
 - [Lab 02 — Fixing Internet Connectivity with NAT Adapter](notes/lab-02-nat-adapter-internet-connectivity.md)
 - [Lab 03 — DNS Troubleshooting & DNS Cache Commands](notes/lab-03-dns-troubleshooting.md)
+- [Lab 04 — Network Adapter Disable/Enable Troubleshooting](notes/lab-04-network-adapter-disable-enable.md)
 
 ## Troubleshooting Scenarios
 
 - [Scenario 01 — No Default Gateway Configured](troubleshooting-scenarios/scenario-01-no-default-gateway.md)
 - [Scenario 02 — Fixing Internet Connectivity with NAT Adapter](troubleshooting-scenarios/scenario-02-fixing-internet-connectivity-with-nat.md)
 - [Scenario 03 — Public DNS Cannot Resolve Private Active Directory Domain](troubleshooting-scenarios/scenario-03-public-dns-cannot-resolve-private-domain.md)
+- [Scenario 04 — Disabled NAT Adapter Causing No Internet Access](troubleshooting-scenarios/scenario-04-disabled-nat-adapter-no-internet.md)
 
 ## Lab 01: Basic Network Configuration & Connectivity Testing
 
@@ -157,6 +161,50 @@ Tested DNS resolution again after clearing the DNS cache.
 
 ![DNS Lookup After Cache Flush](screenshots/17-nslookup-after-dns-flush.png)
 
+## Lab 04: Network Adapter Disable/Enable Troubleshooting
+
+### Network Adapters Before Disable
+
+Reviewed the Windows network adapters before making any changes.
+
+![Network Adapters Before Disable](screenshots/18-network-adapters-before-disable.png)
+
+### NAT Adapter Disabled
+
+Disabled the NAT adapter to simulate a loss of internet connectivity.
+
+![NAT Adapter Disabled](screenshots/19-nat-adapter-disabled.png)
+
+### IP Configuration After NAT Disabled
+
+Checked `ipconfig /all` after disabling the NAT adapter.
+
+![IP Configuration After NAT Disabled](screenshots/20-ipconfig-after-nat-disabled.png)
+
+### Ping Google DNS Failed After Disable
+
+Tested external connectivity using `ping 8.8.8.8`. The test failed while the NAT adapter was disabled.
+
+![Ping Google DNS Failed After Disable](screenshots/21-ping-google-dns-failed-after-disable.png)
+
+### NAT Adapter Enabled Again
+
+Enabled the NAT adapter again through Windows Network Connections.
+
+![NAT Adapter Enabled Again](screenshots/22-nat-adapter-enabled-again.png)
+
+### Ping Google DNS Success After Enable
+
+Tested external connectivity again. The ping test succeeded after the NAT adapter was enabled.
+
+![Ping Google DNS Success After Enable](screenshots/23-ping-google-dns-success-after-enable.png)
+
+### DNS Lookup After Adapter Enable
+
+Tested internal Active Directory DNS resolution after enabling the adapter again.
+
+![DNS Lookup After Adapter Enable](screenshots/24-nslookup-domain-after-adapter-enable.png)
+
 ## Commands Used
 
 ```cmd
@@ -184,6 +232,8 @@ ipconfig /flushdns
 - Default gateway troubleshooting
 - NAT adapter configuration
 - VirtualBox networking
+- Windows Network Connections
+- Network adapter disable/enable troubleshooting
 - Internal vs external network testing
 - Public DNS vs internal DNS
 - Active Directory DNS checks
@@ -206,4 +256,6 @@ In Lab 03, I tested the difference between public DNS and internal Active Direct
 
 I also practised displaying and flushing the DNS resolver cache using `ipconfig /displaydns` and `ipconfig /flushdns`.
 
-This helped me understand the difference between internal lab networking, DNS, default gateways, NAT, DNS cache, and internet connectivity troubleshooting.
+In Lab 04, I simulated a connectivity issue by disabling the NAT adapter. This showed how a disabled adapter can stop internet access and how enabling the adapter again restores connectivity.
+
+This helped me understand the difference between internal lab networking, DNS, default gateways, NAT, DNS cache, network adapter status, and internet connectivity troubleshooting.
