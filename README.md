@@ -205,6 +205,50 @@ Tested internal Active Directory DNS resolution after enabling the adapter again
 
 ![DNS Lookup After Adapter Enable](screenshots/24-nslookup-domain-after-adapter-enable.png)
 
+## Lab 05: DNS Misconfiguration Troubleshooting
+
+### Correct DNS Before Change
+
+Verified that the client was correctly configured to use the domain controller as its DNS server.
+
+![Correct DNS Before Change](screenshots/25-correct-dns-before-change.png)
+
+### Wrong DNS Configured
+
+Changed the preferred DNS server from `192.168.10.10` to Google's public DNS (`8.8.8.8`) to simulate a DNS configuration issue.
+
+![Wrong DNS Configured](screenshots/26-wrong-dns-configured.png)
+
+### Internet Connectivity Still Works
+
+Confirmed that the client could still reach external IP addresses even though the DNS server was incorrect.
+
+![Ping Google DNS Success With Wrong DNS](screenshots/27-ping-google-dns-success-with-wrong-dns.png)
+
+### Internal Domain Resolution Failed
+
+Confirmed that `shirleylab.local` could not be resolved while using the wrong DNS server.
+
+![NSLookup Domain Failed](screenshots/28-nslookup-domain-failed-wrong-dns.png)
+
+### DNS Restored
+
+Changed the preferred DNS server back to the domain controller.
+
+![DNS Restored](screenshots/29-dns-restored-to-domain-controller.png)
+
+### DNS Cache Flushed
+
+Cleared the DNS resolver cache.
+
+![Flush DNS Cache](screenshots/30-flush-dns-after-restore.png)
+
+### Internal Domain Resolution Restored
+
+Confirmed that the Active Directory domain could once again be resolved after restoring the correct DNS server.
+
+![NSLookup Domain Success](screenshots/31-nslookup-domain-success-after-dns-restore.png)
+
 ## Commands Used
 
 ```cmd
