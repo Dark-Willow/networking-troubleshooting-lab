@@ -4,7 +4,7 @@
 
 This repository documents a hands-on networking troubleshooting lab using a Windows 10 client in an Active Directory lab environment.
 
-The purpose of this project is to practise common IT Support and Service Desk network checks, including IP configuration review, ping testing, DNS testing, traceroute checks, IPv4 adapter review, default gateway troubleshooting, NAT adapter configuration, DNS cache commands, network adapter troubleshooting, DNS misconfiguration troubleshooting, and troubleshooting documentation.
+The purpose of this project is to practise common IT Support and Service Desk network checks, including IP configuration review, ping testing, DNS testing, traceroute checks, IPv4 adapter review, default gateway troubleshooting, NAT adapter configuration, DNS cache commands, network adapter troubleshooting, DNS misconfiguration troubleshooting, and troubleshooting documentation. The lab also includes service desk-style tickets to document each issue from a support workflow perspective.
 
 ## Lab Environment
 
@@ -50,6 +50,14 @@ The purpose of this project is to practise common IT Support and Service Desk ne
 - [Scenario 03 — Public DNS Cannot Resolve Private Active Directory Domain](troubleshooting-scenarios/scenario-03-public-dns-cannot-resolve-private-domain.md)
 - [Scenario 04 — Disabled NAT Adapter Causing No Internet Access](troubleshooting-scenarios/scenario-04-disabled-nat-adapter-no-internet.md)
 - [Scenario 05 — Wrong DNS Server Causing Internal Domain Resolution Failure](troubleshooting-scenarios/scenario-05-wrong-dns-server-internal-domain-failure.md)
+  
+## Service Desk Tickets
+
+- [Ticket 01 — No Default Gateway Configured](tickets/ticket-01-no-default-gateway.md)
+- [Ticket 02 — Internet Connectivity Restored with NAT Adapter](tickets/ticket-02-nat-adapter-internet-fix.md)
+- [Ticket 03 — Public DNS Cannot Resolve Private Domain](tickets/ticket-03-public-dns-private-domain.md)
+- [Ticket 04 — Disabled NAT Adapter Causing No Internet Access](tickets/ticket-04-disabled-nat-adapter.md)
+- [Ticket 05 — Wrong DNS Server Causing Internal Domain Resolution Failure](tickets/ticket-05-wrong-dns-server.md)
 
 ## Lab 01: Basic Network Configuration & Connectivity Testing
 
@@ -292,6 +300,9 @@ ipconfig /flushdns
 - DNS cache management
 - Service desk documentation
 - Technical documentation
+- Ticket documentation
+- Incident documentation
+- Root cause analysis
 
 ## What I Learned
 
